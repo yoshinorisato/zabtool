@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<META http-equiv=Content-type content="text/html; charset=utf-8">
+<link rel="stylesheet" href="../jquery/themes/base/jquery.ui.all.css" />
+<script type="text/javascript" src="../jquery/jquery.js"></script>
+<script type="text/javascript" src="../jquery/ui/jquery-ui-1.8.18.custom.js"></script>
+<script type="text/javascript" src="../jquery/ui/i18n/jquery.ui.datepicker-ja.js"></script>
+<style>
+.head {margin:10px;padding-top:10px;}
+</style>
+<LINK href="../css/menu.css" type=text/css rel=stylesheet>
+<SCRIPT src="../js/script.js" type=text/javascript></SCRIPT>
+
+<title>アラーム統計レポート</title>
+<SCRIPT>
+<!--
+jQuery( function() {
+    var dates = jQuery( '#jquery-ui-datepicker-from, #jquery-ui-datepicker-to' ) . datepicker( {
+        showAnim: 'fadeIn',
+        changeMonth: true,
+        numberOfMonths: 2,
+        showCurrentAtPos: 1,
+        onSelect: function( selectedDate ) {
+            var option = this . id == 'jquery-ui-datepicker-from' ? 'minDate' : 'maxDate',
+                instance = jQuery( this ) . data( 'datepicker' ),
+                date = jQuery . datepicker . parseDate(
+                    instance . settings . dateFormat ||
+                    jQuery . datepicker . _defaults . dateFormat,
+                    selectedDate, instance . settings );
+            dates . not( this ) . datepicker( 'option', option, date );
+        }
+    } );
+} );
+
+function disp(){
+	var date1 = document.getElementById('jquery-ui-datepicker-from');
+	if ( date1.value == ""){
+		date1.style.backgroundColor = "#ff0000";
+		date1 = document.getElementById('jquery-ui-datepicker-to');
+		if (date1.value == ""){
+
+			date1.style.backgroundColor = "#ff0000";
+
+			alert('開始日、終了日を入力して下さい。');
+			return false;
+		}
+		date1.style.backgroundColor = "#ffffff";
+
+		alert('開始日を入力して下さい。');
+		return false;
+	}
+	date1.style.backgroundColor = "#ffffff";
+
+	date1 = document.getElementById('jquery-ui-datepicker-to');
+	if (date1.value == ""){
+		date1.style.backgroundColor = "#ff0000";
+
+		alert('終了日を入力して下さい。');
+		return false;
+	}
+		date1.style.backgroundColor = "#ffffff";
+
+	// 「OK」時の処理開始 ＋ 確認ダイアログの表示
+	if(window.confirm('イベントリストの取得を行います。よろしいですか？')){
+
+		document.form1.action = "getAlarm.php"; 
+		document.form1.submit(); 
+	}
+
+	// 「キャンセル」時の処理開始
+	else{
+		window.alert('キャンセルされました'); // 警告ダイアログを表示
+		return false;
+	}
+	// 「キャンセル」時の処理終了
+}
+-->
+
+</SCRIPT>
+</HEAD>
+<BODY>
+<SCRIPT LANGUAGE="JavaScript">
+WriteMenu(3)
+</SCRIPT>
+<div class="head">
+<H4>取得する日付の範囲を選択し出力ボタンを押して下さい。<H4>
+</div>
+<form name="form1" method="post" enctype="multipart/form-data">
+<table>
+<p id="jquery-ui-datepicker-wrap">
+    日付範囲: 
+    <input type="text" id="jquery-ui-datepicker-from" name="jquery-ui-datepicker-from"/>
+    <label for="jquery-ui-datepicker-from">から</label>
+    <input type="text" id="jquery-ui-datepicker-to" name="jquery-ui-datepicker-to"/>
+    <label for="jquery-ui-datepicker-to">まで</label>
+</p>
+	  <input type="button" value="出力" onClick="disp()" >
+
+</table>
+</form>
+</BODY></HTML>
