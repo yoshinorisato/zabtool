@@ -1,2 +1,2 @@
 # zabtool
-Zabbix version for 4
+Zabbix version for 3 or 4
